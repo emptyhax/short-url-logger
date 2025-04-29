@@ -19,7 +19,7 @@ def save_urls(urls):
 def generate_short_code(url):
 
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    short_code = ''.join(random.choice(characters) for _ in range(4))
+    short_code = ''.join(random.choice(chars) for _ in range(4))
     return short_code
 
 @app.route('/new', methods=['POST'])
@@ -60,10 +60,6 @@ def get_all_url():
         data = json.load(file)
 
         return jsonify(data), 200
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
