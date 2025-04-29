@@ -18,7 +18,8 @@ def save_urls(urls):
 
 def generate_short_code(url):
 
-    return hashlib.md5(url.encode()).hexdigest()[:6] 
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
 
 @app.route('/new', methods=['POST'])
 def create_short_url():
