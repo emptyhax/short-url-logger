@@ -19,7 +19,8 @@ def save_urls(urls):
 def generate_short_code(url):
 
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
+    short_code = ''.join(random.choice(characters) for _ in range(4))
+    return short_code
 
 @app.route('/new', methods=['POST'])
 def create_short_url():
