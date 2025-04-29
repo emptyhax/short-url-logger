@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, jsonify
-import hashlib
 import json
 import os
+import random
 
 app = Flask(__name__)
 url_file = 'urls.json'
@@ -43,7 +43,6 @@ def create_short_url():
 
     return jsonify({'shortUrl': f'http://localhost:5000/{code}'}), 201
 
-
 @app.route('/<code>', methods=['GET'])
 def redirect_to_url(code):
     urls = load_urls()
@@ -52,7 +51,6 @@ def redirect_to_url(code):
         return redirect(urls[code], 302)
     
     return jsonify({'error': 'Link not found'}), 404
-
 
 @app.route('/list', methods=['GET'])
 def get_all_url():
