@@ -18,7 +18,7 @@ def save_urls(urls):
 
 def generate_short_code(url):
 
-    return hashlib.md5(url.encode()).hexdigest()[:6]  # Pega os primeiros 6 caracteres
+    return hashlib.md5(url.encode()).hexdigest()[:6] 
 
 @app.route('/new', methods=['POST'])
 def create_short_url():
@@ -50,6 +50,18 @@ def redirect_to_url(code):
         return redirect(urls[code], 302)
     
     return jsonify({'error': 'Link not found'}), 404
+
+
+@app.route('/list', methods=['GET'])
+def get_all_url():
+    with open('urls.json', 'r') as file:
+        data = json.load(file)
+
+        return jsonify(data), 200
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
