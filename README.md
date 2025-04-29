@@ -25,6 +25,14 @@ py main.py
 
 ## Routes
 
+- `GET /<code>`: Redireciona para a URL longa associada ao código curto fornecido.
+  - Exemplo de uso: `GET /abc123`
+  - Resposta: Redireciona para a URL longa associada ao código curto.
+
+- `GET /list`: Retorna todos os links encurtados.
+  - Exemplo de uso: `GET /list`
+  - Resposta: Todas as urls encurtadas.
+
 - `POST /new`: Recebe uma URL longa e retorna uma URL curta.
   - Corpo da requisição (JSON):
     ```json
@@ -38,8 +46,4 @@ py main.py
       "shortUrl": "http://localhost:5000/abc123"
     }
     ```
-
-- `GET /<code>`: Redireciona para a URL longa associada ao código curto fornecido.
-  - Exemplo de uso: `GET /abc123`
-  - Resposta: Redireciona para a URL longa associada ao código curto.
 
