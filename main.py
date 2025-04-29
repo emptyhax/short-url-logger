@@ -5,6 +5,7 @@ import random
 
 app = Flask(__name__)
 url_file = 'urls.json'
+short_code_length = 16
 def load_urls():
     if os.path.exists(url_file):
         with open(url_file, 'r') as file:
@@ -19,7 +20,7 @@ def save_urls(urls):
 def generate_short_code(url):
 
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    short_code = ''.join(random.choice(chars) for _ in range(4))
+    short_code = ''.join(random.choice(chars) for _ in range(short_code_length))
     return short_code
 
 @app.route('/new', methods=['POST'])
@@ -53,11 +54,10 @@ def redirect_to_url(code):
     return jsonify({'error': 'Link not found'}), 404
 
 @app.route('/list', methods=['GET'])
-def get_all_url():
-    with open('urls.json', 'r') as file:
-        data = json.load(file)
 
-        return jsonify(data), 200
+def list_url():
+    data = load_urls()
+    return jsonify(data), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
