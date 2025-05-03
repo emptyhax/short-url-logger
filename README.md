@@ -12,13 +12,13 @@ A simple short URL generator written in Python using Flask.
    git clone https://github.com/slyhax/shortURL.git
    ```
 
-2. Instale as dependências:
+2. Install the dependencies:
    ```bash
    pip install Flask
    ```
 
 ## Usage
-Execute o script principal para iniciar o servidor.
+Run the main script to start the server.
 ```bash
 py main.py
 ```
@@ -29,22 +29,22 @@ python main.py
 
 ## Routes
 
-- `GET /<code>`: Redireciona para a URL longa associada ao código curto fornecido.
-  - Exemplo de uso: `GET /abc123`
-  - Resposta: Redireciona para a URL longa associada ao código curto.
+- `GET /<code>`: Redirects to the long URL associated with the provided short code.
+  - Example: `GET /abc123`
+  - Response: Redirects to the long URL associated with the short code.
 
-- `GET /list`: Retorna todos os links encurtados.
-  - Exemplo de uso: `GET /list`
-  - Resposta: Todas as urls encurtadas.
+- `GET /list`: Returns all shortened links.
+  - Example: `GET /list`
+  - Response: All the shortened URLs.
 
-- `POST /new`: Recebe uma URL longa e retorna uma URL curta.
-  - Corpo da requisição (JSON):
+- `POST /new`: Receives a long URL and returns a shortened URL.
+  - Request body (JSON):
     ```json
     {
-      "url": "https://www.exemplo.com"
+      "url": "https://www.example.com"
     }
     ```
-  - Resposta (JSON):
+  - Response (JSON):
     ```json
     {
       "shortUrl": "http://localhost:5000/abc123"
