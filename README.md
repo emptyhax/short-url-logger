@@ -22,6 +22,10 @@ Execute o script principal para iniciar o servidor.
 ```bash
 py main.py
 ```
+or
+```bash
+python main.py
+```
 
 ## Routes
 
