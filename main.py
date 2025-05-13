@@ -16,7 +16,6 @@ def save_urls(urls):
     with open(url_file, 'w') as file:
         json.dump(urls, file, indent=2)
 
-
 def generate_short_code(url):
 
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -50,10 +49,10 @@ def redirect_to_url(code):
 
     if code in urls:
         return redirect(urls[code], 302)
-    
-    return jsonify({'error': 'Link not found'}), 404
+   
+   return jsonify({'error': 'Link not found'}), 404
 
-@app.route('/list', methods=['GET'])
+@app.route('/links', methods=['GET'])
 
 def list_url():
     data = load_urls()
