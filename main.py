@@ -2,9 +2,11 @@ from flask import Flask, request, redirect, jsonify
 import json
 import os
 import random
+from datetime import datetime
 
 app = Flask(__name__)
 url_file = 'urls.json'
+log_file = 'access_logs.json'
 short_code_length = 16
 def load_urls():
     if os.path.exists(url_file):
@@ -22,6 +24,34 @@ def generate_short_code(url):
     short_code = ''.join(random.choice(chars) for _ in range(short_code_length))
     return short_code
 
+
+
+def log_access(code, req):
+    ip = request.remote_addr
+    user_agent = request.headers.get('User-Agent')
+    path = request.path
+    query = request.query_string.decode()
+    timestamp = datetime.now().isoformat()
+
+    log_entry = {
+        'code': code,
+        'ip': ip,
+        'user_agent': user_agent,
+        'path': path,
+        'query': query,
+        'timestamp': timestamp
+    }
+
+    if os.path.exists(log_file):
+        with open(log_file, 'r') as file:
+            logs = json.load(file)
+    else:
+        logs = []
+
+    logs.append(log_entry)
+
+    with open(log_file, 'w') as file:
+        json.dump(logs, file, indent=2)
 @app.route('/new', methods=['POST'])
 def create_short_url():
     data = request.get_json()
