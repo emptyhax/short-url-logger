@@ -12,7 +12,7 @@ A simple and fast URL shortener built with Python and Flask.
 
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/slyhax/short-url-logger
+   git clone https://github.com/emptyhax/short-url-logger
    cd short-url-logger
    ```
 
