@@ -105,4 +105,4 @@ Returns all access logs for the short URLs.
 
 ## 🖤 Author
 
-Made by **Hax** — [github.com/emptyhax](https://github.com/emptyhax)
+Made by **Hax** — [hax](https://github.com/emptyhax)
